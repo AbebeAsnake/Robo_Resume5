@@ -9,10 +9,14 @@
 <div class="jumbotron">
     <div class="container">
         <br/><br/><br/>
-        <label>List of jobs</label>
-<ul th:each="jobs : ${joblist}">
-    <li th:text="${jobs.jobTitle}"></li>
-</ul>
+
+<div th:each="person : ${person}" style="margin-left: 300px">
+    <img th:src="${person.image}" height="100px" width="90px"/>
+
+    <span th:text="${person.firstName}"></span>
+    <span th:text="${person.lastName}"></span><br/>
+    <p th:text="${person.email}"></p>
+</div>
     </div>
 </div>
 </body>

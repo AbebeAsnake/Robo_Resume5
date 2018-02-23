@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+<ul th:each="person : ${personforms}">
+
+    <li th:inline="text">[[${person.firstName}]] <br/>
+    </li>
+    <li th:inline="text">[[${person.lastName}]] <br/>
+    </li>
+    <li th:inline="text">[[${person.phoneNumber}]] <br/>
+    </li>
+    <li th:inline="text">[[${person.email}]] <br/>
+    </li>
+    <li th:inline="text">[[${person.address}]] <br/>
+    </li>
+    <li th:inline="text">[[${person.city}]] <br/>
+    </li>
+    <li th:inline="text">[[${person.state}]] <br/>
+    </li>
+    <li th:inline="text">[[${person.country}]] <br/>
+    </li>
+    <li th:inline="text">[[${person.zipCode}]] <br/>
+    </li>
+    <li> <a th:href="@{/update/{id}(id=${person.applicantId})}">Update</a></li>
+    <li> <a th:href="@{/delete/{id}(id=${person.applicantId})}">Delete</a></li>
+
+</ul>
+</body>
+</html>

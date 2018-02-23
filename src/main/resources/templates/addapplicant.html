@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.tymeleaf.org/thymeleaf-extras-springsecurity4">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<head>
+    <th:block th:replace="fragments/fragments::agencyhead"></th:block>
+</head>
+<body>
+<div th:replace="base :: navbar"></div>
+<div class="jumbotron">
+    <div class="container">
+        <br/><br/><br/>
+<form action="#"
+      th:action="@{/postp}"
+      th:object="${person}"
+      class="form-horizontal" method="POST" style="margin-left: 400px">
+    <fieldset  class="form-group">
+
+        <div id="legend">
+            <legend class="">Contact Information</legend>
+        </div>
+        <div class="control-group">
+            <input type="hidden" th:field="*{applicantId}"/>
+            <!-- Username -->
+            <label class="control-label"  for="firstName">First Name </label>
+            <div class="controls">
+                <input type="text" th:field="*{firstName}" id="firstName" name="firstName" placeholder="" class="input-xlarge"/>
+                <span th:if="${#fields.hasErrors('firstName')}"
+                      th:errors="*{firstName}"></span>
+
+            </div>
+        </div>
+
+
+        <div class="control-group">
+            <!-- Username -->
+            <label class="control-label"  for="lastname">Last Name </label>
+            <div class="controls">
+                <input type="text" th:field="*{lastName}" id="lastname" name="lastName" placeholder="" class="input-xlarge"/>
+                <span th:if="${#fields.hasErrors('lastName')}"
+                      th:errors="*{lastName}"></span>
+
+            </div>
+        </div>
+
+        <div class="control-group">
+            <!-- E-mail -->
+            <label class="control-label" for="email">E-mail</label>
+            <div class="controls">
+                <input type="text" id="email" name="email" placeholder="" th:field="*{email}" class="input-xlarge"/>
+                <span th:if="${#fields.hasErrors('email')}"
+                      th:errors="*{email}"></span>
+
+            </div>
+        </div>
+        <div class="control-group">
+            <!-- Username -->
+            <label class="control-label"  for="phoneNumber">Phone Number </label>
+            <div class="controls">
+                <input type="text" th:field="*{phoneNumber}" id="phoneNumber" name="phoneNumber" placeholder="phoneNumber" class="input-xlarge"/>
+
+            </div>
+        </div>
+        <div class="control-group">
+            <!-- Username -->
+            <label class="control-label"  for="address">Address </label>
+            <div class="controls">
+                <input type="text" th:field="*{address}" id="address" name="address" placeholder="address" class="input-xlarge"/>
+                <span th:if="${#fields.hasErrors('address')}"
+                      th:errors="*{address}"></span>
+
+            </div>
+        </div>
+
+        <div class="control-group">
+            <!-- Username -->
+            <label class="control-label"  for="city">City </label>
+            <div class="controls">
+                <input type="text" th:field="*{city}" id="city" name="city" placeholder="city" class="input-xlarge"/>
+                <span th:if="${#fields.hasErrors('city')}"
+                      th:errors="*{city}"></span>
+
+            </div>
+        </div>
+        <div class="control-group">
+            <!-- Username -->
+            <label class="control-label"  for="state">State </label>
+            <div class="controls">
+                <input type="text" th:field="*{state}" id="state" name="city" placeholder="state" class="input-xlarge"/>
+                <span th:if="${#fields.hasErrors('state')}"
+                      th:errors="*{state}"></span>
+
+            </div>
+        </div>
+
+        <div class="control-group">
+            <!-- Username -->
+            <label class="control-label"  for="zipCode">Zip Code </label>
+            <div class="controls">
+                <input type="text" th:field="*{zipCode}" id="zipCode" name="zipCode" placeholder="zipcode" class="input-xlarge"/>
+                <span th:if="${#fields.hasErrors('zipCode')}"
+                      th:errors="*{zipCode}"></span>
+
+            </div>
+        </div>
+
+        <div class="control-group">
+            <!-- Username -->
+            <label class="control-label"  for="address">Country </label>
+            <div class="controls">
+                <input type="text" th:field="*{country}" id="country" name="address" placeholder="country" class="input-xlarge"/>
+                <span th:if="${#fields.hasErrors('country')}"
+                      th:errors="*{country}"></span>
+
+            </div>
+        </div>
+        <input type="text" th:fiel="*{image}" placeholder="image (Url)"/>
+        <div class="control-group">
+            <!-- Button -->
+            <div class="controls">
+                <button type="submit" class="btn btn-success">Register</button>
+            </div>
+        </div>
+    </fieldset>
+</form>
+    </div></div>
+</body>
+</html>

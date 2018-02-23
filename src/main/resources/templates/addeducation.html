@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.tymeleaf.org/thymeleaf-extras-springsecurity4">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<head>
+    <th:block th:replace="fragments/fragments::agencyhead"></th:block>
+</head>
+<body>
+<div th:replace="base :: navbar"></div>
+<div class="jumbotron">
+    <div class="container">
+        <br/><br/><br/>
+
+        <form action="#"
+      th:action="@{/poste}"
+      th:object="${education}"
+      method="post">
+    <input type="hidden" th:field="*{id}"/>
+    College Name<input type="text" th:field="*{collegeName}"/><br/>
+    <span th:if="${#fields.hasErrors('collegeName')}"
+          th:errors="*{collegeName}"></span><br/>
+    Level of education<input type="text" th:field="*{educationLevel}"/><br/>
+    <span th:if="${#fields.hasErrors('educationLevel')}"
+          th:errors="*{educationLevel}"></span>
+    Year of graduation:<input type="text" th:field="*{graduationDate}"/><br/>
+    <span th:if="${#fields.hasErrors('graduationDate')}"
+          th:errors="*{graduationDate}"></span>
+    Field Of Study:<input type="text" th:field="*{fieldOfStudy}"/><br/>
+    <span th:if="${#fields.hasErrors('fieldOfStudy')}"
+          th:errors="*{fieldOfStudy}"></span>
+
+    <input type="submit" value="Submit"/>
+</form>
+    </div>
+</div>
+</body>
+</html>

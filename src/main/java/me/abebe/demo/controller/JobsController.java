@@ -7,6 +7,7 @@ import me.abebe.demo.repo.DesiredSkillsRepository;
 import me.abebe.demo.repo.JobsRepository;
 import me.abebe.demo.repo.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -35,7 +36,7 @@ public class JobsController {
     }
     @RequestMapping(path="/addjobs", method=RequestMethod.POST)
     private String postJob(@Valid Jobs job, BindingResult bindingResult,
-                           Principal principal, Model model){
+                           Authentication principal, Model model){
 
         User user = userRepository.findByUserName(principal.getName());
 
@@ -46,12 +47,13 @@ public class JobsController {
         job.setPostedBy(user.getFirstName());
         jobsRepository.save(job);
 
-        List<Jobs> j = jobsRepository.findByPostedBy(user.getFirstName());
-        int i = j.size();
-        Jobs jobatIndex = j.get(i-1);
+        List<Jobs> jobs = jobsRepository.findByPostedBy(user.getFirstName());
+        int i = jobs.size();
+        Jobs jobatIndex = jobs.get(i-1);
         model.addAttribute("jobId",jobatIndex.getJobId());
         model.addAttribute("skills", new DesiredSkills());
-        return "adddesiredSkills";
+        System.out.println(user.getFirstName());
+        return "adddesiredskills";
 
     }
     @RequestMapping(path="/job/skill/{jobId}")
@@ -60,7 +62,7 @@ public class JobsController {
         model.addAttribute("jobId", jobId);
         model.addAttribute("skillList",skList);
         model.addAttribute("skills", new DesiredSkills());
-        return "adddesiredSkills";
+        return "adddesiredskills";
     }
 
     @RequestMapping(path="/job/skill", method=RequestMethod.POST)
@@ -102,9 +104,9 @@ public class JobsController {
         return "searchbyorganization";
     }
     @RequestMapping("/sayhi")
-private String userJob(Model model,Principal principal){
-        User user = userRepository.findByUserName(principal.getName().toString());
-        System.out.println(user);
+private String userJob(Model model,Authentication principal){
+        User user = userRepository.findByUserName(principal.getName());
+        System.out.println(user.getFirstName());
         return "redirect:/jobsearch";
 }
 }

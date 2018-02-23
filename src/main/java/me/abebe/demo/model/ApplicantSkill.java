@@ -11,13 +11,14 @@ public class ApplicantSkill {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long appSkillId;
 
-    public ApplicantSkill() {
-    }
+
 
     private String rating;
     private String personId;
-    private String skills;
 
+    private String skills;
+    public ApplicantSkill() {
+    }
     public ApplicantSkill(String rating, String personId, String skills) {
         this.rating = rating;
         this.personId = personId;

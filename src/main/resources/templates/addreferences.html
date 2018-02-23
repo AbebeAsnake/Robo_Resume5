@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.tymeleaf.org/thymeleaf-extras-springsecurity4">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<head>
+    <th:block th:replace="fragments/fragments::agencyhead"></th:block>
+</head>
+<body>
+<div th:replace="base :: navbar"></div>
+<div class="jumbotron">
+    <div class="container">
+        <br/><br/><br/>
+<h3>Add references</h3>
+        <form action="#" th:action="@{/refernce}" th:object="${reference}" method="post">
+    <div class="control-group">
+        <!-- Username -->
+        <input type="hidden" th:field="*{id}"/>
+        <label class="control-label"  for="username">First Name </label>
+        <div class="controls">
+            <input type="text" th:field="*{firstName}" id="username" name="firstName" placeholder="" class="input-xlarge"/>
+            <span th:if="${#fields.hasErrors('firstName')}"
+                  th:errors="*{firstName}"></span>
+
+        </div>
+    </div>
+
+    <div class="control-group">
+        <!-- Username -->
+        <label class="control-label"  for="username">Last Name </label>
+        <div class="controls">
+            <input type="text" th:field="*{lastName}" id="lastname" name="lastName" placeholder="" class="input-xlarge"/>
+            <span th:if="${#fields.hasErrors('lastName')}"
+                  th:errors="*{lastName}"></span>
+
+        </div>
+    </div>
+
+    <div class="control-group">
+        <!-- E-mail -->
+        <label class="control-label" for="email">E-mail</label>
+        <div class="controls">
+            <input type="text" id="email" name="email" placeholder="" th:field="*{email}" class="input-xlarge"/>
+            <span th:if="${#fields.hasErrors('email')}"
+                  th:errors="*{email}"></span>
+
+        </div>
+    </div>
+    <div class="control-group">
+        <!-- Username -->
+        <label class="control-label"  for="phoneNumber">Phone Number </label>
+        <div class="controls">
+            <input type="text" th:field="*{phoneNumber}" id="phoneNumber" name="phoneNumber" placeholder="phoneNumber" class="input-xlarge"/>
+
+        </div>
+    </div>
+    <div>
+        <input type="checkbox" id="isShow" name="isShow" value="yes" th:field="*{isShow}"/>
+        <label for="isShow">Show reference to employer</label>
+    </div>
+    <div class="control-group">
+        <!-- Button -->
+        <div class="controls">
+            <button type="submit" class="btn btn-success">Submit</button>
+        </div>
+    </div>
+</form>
+    </div></div>
+</body>
+</html>

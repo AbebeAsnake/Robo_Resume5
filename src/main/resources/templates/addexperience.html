@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.tymeleaf.org/thymeleaf-extras-springsecurity4">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<head>
+    <th:block th:replace="fragments/fragments::agencyhead"></th:block>
+</head>
+<body>
+<div th:replace="base :: navbar"></div>
+<div class="jumbotron">
+    <div class="container">
+        <br/><br/><br/>
+<h3>Add your experience</h3>
+        <form action="#"
+      th:action="@{/postw}"
+      th:object="${workexperience}"
+      method="post">
+    <input type="hidden" th:field="*{id}"/>
+    <label>Company Name</label> <input type="text" th:field="*{companyName}"/>
+    <span th:if="${#fields.hasErrors('companyName')}"
+          th:errors="*{companyName}"></span><br/>
+    Start Date<input type="text" th:field="*{startDate}"/><br/>
+    <span th:if="${#fields.hasErrors('startDate')}"
+          th:errors="*{startDate}"></span>
+    End Date:<input type="text" th:field="*{endDate}"/><br/>
+    <span th:if="${#fields.hasErrors('endDate')}"
+          th:errors="*{endDate}"></span>
+    Position<input type="text" th:field="*{position}"/><br/>
+    <span th:if="${#fields.hasErrors('position')}"
+          th:errors="*{position}"></span>
+    Duties<input type="text" th:field="*{duties}"/><br/>
+    <span th:if="${#fields.hasErrors('duties')}"
+          th:errors="*{duties}"></span>
+
+    <input type="submit" value="Submit"/>
+</form>
+</body>
+</html>

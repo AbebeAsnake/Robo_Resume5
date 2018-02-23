@@ -5,14 +5,15 @@ import me.abebe.demo.model.User;
 import me.abebe.demo.repo.ApplicantSkillRepository;
 import me.abebe.demo.repo.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.validation.Valid;
-import java.security.Principal;
 
 @Controller
 public class SkillController {
@@ -20,24 +21,22 @@ public class SkillController {
     UserRepository userRepository;
     @Autowired
     ApplicantSkillRepository applicantSkillRepository;
-    @RequestMapping(path="/addskills", method= RequestMethod.POST)
-    private String postskill(@Valid ApplicantSkill skill, BindingResult bindingResult,
-                           Principal principal, Model model){
+    @RequestMapping("/addskill")
+    private String postSkill(@Valid ApplicantSkill skill, BindingResult result, Authentication principal){
 
         User user = userRepository.findByUserName(principal.getName());
 
-        if(bindingResult.hasErrors()){
+        if(result.hasErrors()){
             return "addjobs";
         }
         //job.setPostedDate(new Date());
-        skill.setPersonId(user.getFirstName());
+        skill.setPersonId(user.getUserName());
+        System.out.println(user.getUserName());
         applicantSkillRepository.save(skill);
 
-
-        return "addskill";
-
+        return "redirect:/addjobs";
     }
-    @RequestMapping(path="/addskill", method =RequestMethod.GET)
+    @GetMapping("/addskill")
     public String skilladd(Model model){
         model.addAttribute("skillss", new ApplicantSkill());
         return "addskill";

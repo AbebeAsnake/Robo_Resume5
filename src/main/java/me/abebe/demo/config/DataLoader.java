@@ -33,15 +33,15 @@ public class DataLoader implements CommandLineRunner {
         Role recuriterRole = roleRepository.findByRole("RECURITER");
 
         User user = new
-                User("employer@employer.com","password","employer","emp", true,"employer");
+                User("employer@employer.com","password","employern","emp", true,"employer");
         user.setRoles(Arrays.asList(employerRole));
         userRepository.save(user);
         user = new
-                User("applicant@applicant.com","password","applicant","app", true,"applicant");
+                User("applicant@applicant.com","password","applicantn","app", true,"applicant");
         user.setRoles(Arrays.asList(applicantRole));
         userRepository.save(user);
         user = new
-                User("recuriter@recuriter.com","password","recuriter","recu", true,"recuriter");
+                User("recuriter@recuriter.com","password","recuritern","recu", true,"recuriter");
         user.setRoles(Arrays.asList(recuriterRole));
         userRepository.save(user);
        /* Jobs job = new Jobs("developer","java developer for contract to hire ");

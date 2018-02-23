@@ -1,14 +1,35 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security4">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.tymeleaf.org/thymeleaf-extras-springsecurity4">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <head>
-    <meta charset="UTF-8"/>
-    <title>Title</title>
+    <th:block th:replace="fragments/fragments::agencyhead"></th:block>
 </head>
 <body>
-<form th:action="@{/addskills}" th:object="${skillss}" method="post">
-    <input type="hidden" th:field="*{appSkillId}"/>
-    <input type="text" th:field="*{skills}"/>
-    <input type="text" th:field="*{rating}"/><input type="submit" value="submit"/>
-</form>
+<div th:replace="base :: navbar"></div>
+
+<div class="jumbotron">
+    <div class="container">
+        <form  th:action="@{/addskill}" th:object="${skillss}" method="post">
+            <br /><br /><br />
+            <h3>Add Your skills </h3>
+
+            <input type="hidden" th:field="*{appSkillId}"/>
+            <div  class="form-group">
+                <label >Skill
+                    <mark><strong><span th:if="${#fields.hasErrors('appSkillId')}" th:errors="*{appSkillId}">Skills Error</span></strong></mark></label>
+                <input type="text" class="form-control" id="appSkillId" placeholder="skill" th:field="*{appSkillId}" />
+
+            </div>
+            <div  class="form-group">
+                <label >Rating
+                    <mark><strong><span th:if="${#fields.hasErrors('rating')}" th:errors="*{rating}">Skills Error</span></strong></mark></label>
+                <input type="text" class="form-control" id="rating" placeholder="rating" th:field="*{rating}" />
+
+            </div>
+
+            <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+    </div>
+</div>
 </body>
 </html>

@@ -29,21 +29,17 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
         http
                 .authorizeRequests()
-                .antMatchers("/h2-console/**","/register","/","/images","/css","/addjob","/addqualification/**","/qualififcationadd/**","/qualificationadd/**","/desired/**","/desiredprocess/**","/desiredskill/**","/desiredskills/**").permitAll()
+                .antMatchers("/h2-console/**","/register/**","/","/images","/css/**","/addjob","/addqualification/**",
+                        "/qualififcationadd/**","/qualificationadd/**","/desired/**","/desiredprocess/**","/desiredskill/**",
+                        "/desiredskills/**","/vendor/**","/scss/**","/js/**").permitAll()
                 .antMatchers("/postp","/poste","/postw","/posts","/summary","/refernce")
-                .access("hasAuthority('USER') ")
+                .access("hasAuthority('APPLICANT') ")
                 .antMatchers("/displayresume","/coverletter","/addjobs/**","/alljobs/**",
-                        "/job/organization/**","/jobsearch/**","/sayhi","/addskill/**").access("hasAuthority('APPLICANT') or hasAuthority('EMPLOYER')")
+                        "/job/organization/**","/jobsearch/**","/sayhi","/addskill/**","/index/**").access("hasAuthority('APPLICANT') or hasAuthority('EMPLOYER')")
                 .anyRequest()
                 .authenticated()
                 .and()
-                .formLogin()
-                .loginPage("/login")
-                .permitAll()
-                .and()
-                .logout()
-                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                .logoutSuccessUrl("/login").permitAll()
+                .formLogin().loginPage("/login").permitAll()
                 .and()
                 .logout()
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
