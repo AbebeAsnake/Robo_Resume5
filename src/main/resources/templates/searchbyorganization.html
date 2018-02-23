@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security4">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+
+    <ul th:each="job :${joblists}">
+        <li th:inline="text"><a th:href="@{/jobsearch/{organization}(organization=${job.organization})}">[[${job.organization}]]</a></li>
+
+    </ul>
+</div>
+</body>
+</html>

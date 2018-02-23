@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security4">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</head><body>
+<div class="jumbotron">
+    <div class="container">
+
+        <div th:each="skill: ${skList}">
+            <label >Skills : <p th:text="${skill.skill}"></p></label>
+        </div>
+        <div th:if="${skList!=null}">
+            <form  action ="#"  th:action="@{'/job/skill/' + ${jobId}}"  method = "post">
+                <input type="hidden" name="skList" th:value = "${skList}"/>
+                <input type = "submit" value="Add skill"/>
+            </form>
+        </div>
+        <div th:if="${skList!=null}">
+            <a th:href="@{'/job/' + ${jobId}}">Done</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

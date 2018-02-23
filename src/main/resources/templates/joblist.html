@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security4">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+<div class="jumbotron">
+    <div class="container">
+
+        <ul th:each="job : ${jobs}">
+
+            <strong><a th:href="'/job/' + ${job.jobId}"><h3 th:text="'jobTitle:' + ${job.jobTitle}"></h3></a></strong>
+            <p>Organization: <span th:text="${job.organization}"></span> </p>
+
+            <br/>
+
+        </ul>
+    </div>
+</div>
+</body>
+</html>

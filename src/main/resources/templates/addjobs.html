@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security4">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="jumbotron">
+    <div class="container">
+        <br /><br /><br />
+        <h4>New Job Post</h4>
+        <form autocomplete="off" action="#" th:action="@{/addjobs}" th:object="${job}" method="post">
+            <div class="form-group">
+                <label for="jobTitle">Title <mark><strong><span th:if="${#fields.hasErrors('jobTitle')}" th:errors="*{jobTitle}">Title Error</span></strong></mark></label>
+                <input type="text" class="form-control" id="jobTitle" placeholder="jobTitle" th:field="*{jobTitle}" />
+            </div>
+            <div class="form-group">
+                <label for="organization">Organization <mark><strong><span th:if="${#fields.hasErrors('organization')}" th:errors="*{organization}">Employer Error</span></strong></mark></label>
+                <input type="text" class="form-control" id="organization" placeholder="organization" th:field="*{organization}" />
+            </div>
+            <div class="form-group">
+                <label for="jobDesc">Job Description <mark><strong><span th:if="${#fields.hasErrors('jobDesc')}" th:errors="*{jobDesc}">Job Description Error</span></strong></mark></label>
+                <textarea type="text" class="form-control" id="jobDesc" th:field="*{jobDesc}" />
+            </div>
+
+
+            <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+    </div><!-- /.container -->
+</div>
+</body>
+</html>

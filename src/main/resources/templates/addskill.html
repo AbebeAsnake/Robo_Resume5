@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security4">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+<form th:action="@{/addskills}" th:object="${skillss}" method="post">
+    <input type="hidden" th:field="*{appSkillId}"/>
+    <input type="text" th:field="*{skills}"/>
+    <input type="text" th:field="*{rating}"/><input type="submit" value="submit"/>
+</form>
+</body>
+</html>
