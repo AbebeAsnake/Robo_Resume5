@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.tymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+
+<!--List education-->
+
+<div th:fragment="education">
+    <h3>Education</h3>
+        <div class="addpadding" th:each="educationitem:${educationlist}">
+            <div class="row">
+              <span class="h6 font-weight-bold" th:inline="text">Institution:&nbsp </span> <span class="h6" th:text="${educationitem.institution}"></span>
+            </div>
+            <div class="row">
+            <span class="h6 font-weight-bold" th:inline="text">Course:&nbsp </span> <div class="h6" th:text="${educationitem.course}">Item</div>
+            </div>
+            <div class="row">
+            <span class="h6 font-weight-bold" th:inline="text">Year:&nbsp </span> <div class="h6" th:text="${educationitem.year}">Item</div>
+            </div>
+            <br/>
+    </div>
+</div>
+<!--End of education list-->
+
+<!--List skill-->
+<div  th:fragment="skill">
+    <label class="h3">Skill</label>
+        <div class="addpadding" th:each="aSkill:${skilllist}">
+            <div class="row">
+                <span class="h6 font-weight-bold" th:inline="text">Skill:&nbsp </span> <span class="h6" th:inline="text">[[${aSkill.skillName}]], [[${aSkill.proficiency}]]</span>
+            </div>
+            <br/>
+        </div>
+
+</div>
+
+<!--End of skill list-->
+
+<!--List experience-->
+<div th:fragment="experience">
+    <label class="h3">Experience</label>
+        <div class="addpadding" th:each="workexperience:${experiencelist}">
+
+            <div class="row">
+                <span class="h6 font-weight-bold" th:inline="text">Organization:&nbsp </span> <span class="h6" th:text="${workexperience.organization}"></span>
+            </div>
+            <div class="row">
+                <span class="h6 font-weight-bold" th:inline="text">Position:&nbsp </span> <span class="h6" th:text="${workexperience.position}"></span>
+            </div>
+            <div class="row">
+                <span class="h6 font-weight-bold" th:inline="text">Start Date:&nbsp </span> <span class="h6" th:text="${workexperience.startDate}"></span>
+            </div>
+            <div class="row">
+                <span class="h6 font-weight-bold" th:inline="text">End Date:&nbsp </span> <span class="h6" th:text="${workexperience.endDate}"></span>
+            </div>
+            <div class="row">
+                <span class="h6 font-weight-bold" th:inline="text">Duties:&nbsp </span> <span class="h6" th:text="${workexperience.duties}"></span>
+            </div>
+            <br/>
+        </div>
+ </div>
+<!-- End of experience list -->
+
+<!--Show personal details-->
+<div th:fragment="persondetails">
+    <div class="row">
+        <img class="rrimg" th:src="${person.image}==null?'https://upload.wikimedia.org/wikipedia/commons/e/e3/User_Avatar_Person_Info_Information-512.png':${person.image}" alt="default image"></img>
+    </div>
+    <div class="row">
+            <label th:inline="text" class="h3">[[${person.firstName}]] [[${person.LastName}]]</label>
+    </div>
+    <div class="row" th:if="${person.resumeSummary}">
+            <label th:inline="text" class="h4">[[${person.resumeSummary}]]</label>
+    </div>
+
+    <div class="row">
+                <label th:inline="text" class="h4">[[${person.email}]]</label>
+    </div>
+
+</div>
+
+<!--End of personal details -->
+
+</body>
+</html>
