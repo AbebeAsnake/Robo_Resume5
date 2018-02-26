@@ -19,12 +19,13 @@
         <div>
             <p th:if="${errormessage!=null}" th:text="${errormessage}"></p>
         </div>
-        <section>
+<section>
         <form th:action="@{/login}" method="post">
             <label> User name : <input type="text"  name="username" /> </label>
             <label> Password:</label> <input type="password" name="password"  />
             <button type="submit" class="btn btn-default">Sign In</button>
-        </form></section>
+        </form>
+</section>
     </div>
 </div>
 </body>

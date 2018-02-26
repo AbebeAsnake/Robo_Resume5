@@ -111,7 +111,7 @@
                     <a th:href="@{/logout?logout}" class="nav-link js-scroll-trigger" sec:authorize="isAuthenticated()">Log Out</a>
                 </li>
                 <li class="nav-item">
-                    <a th:href="@{/postp}" class="nav-link js-scroll-trigger" sec:authorize="isAuthenticated()">Personal Info</a>
+                    <a th:href="@{/postp}" class="nav-link js-scroll-trigger" sec:authorize="hasAuthority('APPLICANT')">Personal Info</a>
                 </li>
                 <li class="nav-item">
                     <a th:href="@{/displayresume}" class="nav-link js-scroll-trigger" sec:authorize="isAuthenticated()">Display resume</a>
@@ -120,19 +120,19 @@
                     <a th:href="@{/alljobs}" class="nav-link js-scroll-trigger" sec:authorize="isAuthenticated()">Job list</a>
                 </li>
                 <li class="nav-item">
-                    <a th:href="@{/addjobs}" class="nav-link js-scroll-trigger" sec:authorize="isAuthenticated()">Add job</a>
+                    <a th:href="@{/addjobs}" class="nav-link js-scroll-trigger"  sec:authorize="hasAuthority('RECRUITER')">Add job</a>
                 </li>
                 <li class="nav-item">
-                    <a th:href="@{/addskill}" class="nav-link js-scroll-trigger" sec:authorize="isAuthenticated()">Add Skill</a>
+                    <a th:href="@{/addskill}" class="nav-link js-scroll-trigger"  sec:authorize="hasAuthority('APPLICANT')">Add Skill</a>
                 </li>
                 <li class="nav-item">
-                    <a th:href="@{/poste}" class="nav-link js-scroll-trigger" sec:authorize="isAuthenticated()">Add Education</a>
+                    <a th:href="@{/poste}" class="nav-link js-scroll-trigger"  sec:authorize="hasAuthority('APPLICANT')">Add Education</a>
                 </li>
                 <li class="nav-item">
-                    <a th:href="@{/postw}" class="nav-link js-scroll-trigger" sec:authorize="isAuthenticated()">Add Experience</a>
+                    <a th:href="@{/postw}" class="nav-link js-scroll-trigger" sec:authorize="hasAuthority('APPLICANT')">Add Experience</a>
                 </li>
                 <li class="nav-item">
-                    <a th:href="@{/refernce}" class="nav-link js-scroll-trigger" sec:authorize="isAuthenticated()">Add References</a>
+                    <a th:href="@{/refernce}" class="nav-link js-scroll-trigger"  sec:authorize="hasAuthority('APPLICANT')">Add References</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Contact</a>
